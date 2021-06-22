@@ -36,40 +36,33 @@ members_count_kicks = 0
 
 
 @app.on_message(filters.group & filters.command("kick"))
-def main(c,m):
-    chat = m.chat
-    global members_count_kicks
-    status_member = chat.get_member(m.from_user.id)
-    status_me = chat.get_member("me")
-    if status_me.status == "administrator" and status_member in status_admin:
+def main(_, msg: Message):
+    chat = msg.chat
+    me = chat.get_member(app.get_me().id)
+    if chat.get_member(msg.from_user.id).can_manage_chat and me.can_restrict_members and me.can_delete_messages:
         try:
-            members_count = str(chat.members_count)
-            c.send_message(chat.id,TEXT_STARTED.format(members_count))
-            for member in c.iter_chat_members(chat.id):
-                if member.status in status_admin:
-                    pass
-                else:
+            msg.reply(STARTED.format(chat.members_count))
+            count_kicks = 0
+            for member in chat.iter_members():
+                if not member.can_manage_chat:
                     chat.kick_member(member.user.id)
-                    members_count_kicks += 1
-            c.send_message(chat.id, TEXT_FINISH.format(members_count_kicks))
+                    count_kicks += 1
+            msg.reply(FINISH.format(count_kicks))
         except Exception as e:
-            c.send_message(chat.id,TEXT_ERROR.format(str(e)))
+            msg.reply(ERROR.format(str(e)))
     else:
-        c.send_message(chat.id,TEXT_ERROR.format("no admin"))
+        msg.reply(ADMIN_NEEDED)
 
 
-@app.on_message(filters.group & filters.service)
-def service(c,m):
+@app.on_message(filters.group & filters.service, group=2)
+def service(c, m):
     m.delete()
 
+
 @app.on_message(filters.private)
-def start(c,m):
-    m.reply(TEXT_PRIVATE,disable_web_page_preview=True,reply_markup=InlineKeyboardMarkup(
-          [[InlineKeyboardButton(text="לערוץ שלי 🎀",
-                       url="https://t.me/m100achuzyou")],
-           [InlineKeyboardButton(text="עדכוני רובוטים",
-                       url="https://t.me/M100achuzBots")]
-           ]))
+def start(_, msg: Message):
+    msg.reply(PRIVATE, reply_markup=InlineKeyboardMarkup([[
+        InlineKeyboardButton("ערוץ עדכוני בוטים", url="t.me/m100achuzBots")]]))
 
 
 app.run()
