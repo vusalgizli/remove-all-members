@@ -9,7 +9,7 @@ https://github.com/pyrogram/pyrogram.git
 import os
 from pyrogram import Client
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 app_id = int(os.environ.get("API_ID", 12345))
 app_key = os.environ.get('API_HASH')
