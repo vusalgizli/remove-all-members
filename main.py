@@ -18,21 +18,13 @@ token = os.environ.get('BOT_TOKEN')
 app = Client("remove", app_id, app_key, bot_token=token)
 
 
-TEXT_STARTED = 'הרובוט מתחיל בהסרת {} משתמשים מהקבוצה 🥾'
-TEXT_FINISH = 'הרובוט סיים להסיר {} משתמשים מהקבוצה'
-TEXT_ERROR = 'משהו נכשל. בדוק אם קיבלתי הרשאות ניהול מספיקות, או שלח זה למפתח:\n {}'
-TEXT_PRIVATE = '''
-היי, אני רובוט שיעזור לכם להסיר את כל המשתמשים מהקבוצה שלכם 🥾
-
+STARTED = 'הרובוט מתחיל בהסרת {} משתמשים מהקבוצה 🥾'
+FINISH = 'הרובוט סיים להסיר {} משתמשים מהקבוצה'
+ERROR = 'משהו נכשל. בדוק אם קיבלתי הרשאות ניהול מספיקות, או שלח זה למפתח:\n {}'
+ADMIN_NEEDED = "כנראה שאו אני או אתה לא מנהלים... \nבשביל לבצע את הפעולה, שנינו זקוקים להיות מנהלים, ואני צריך הרשאה למחוק הודעות ולהעיף משתמשים."
+PRIVATE = '''היי, אני רובוט שיעזור לכם להסיר את כל המשתמשים מהקבוצה שלכם 🥾
 הוסיפו אותי לקבוצה, ואל תשכחו לתת לי ניהול מתאים כדי שאוכל להסיר אותם.
-הוספתם? מעולה. עכשיו תשלחו בקבוצה /kick ואני אתחיל בעבודה שלי.
-
-
-הרובוט נוצר ע"י [מקליד תמיד](tg://user?id=789248230). ניתן לפנות לכל בקשה או הערה, ואשתדל לעזור בשמחה.    
-'''
-
-status_admin = ["administrator", "creator"]
-members_count_kicks = 0
+הוספתם? מעולה. עכשיו תשלחו בקבוצה /kick ואני אתחיל בעבודה שלי.'''
 
 
 @app.on_message(filters.group & filters.command("kick"))
