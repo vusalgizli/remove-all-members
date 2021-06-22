@@ -22,10 +22,10 @@ STARTED = 'הרובוט מתחיל בהסרת {} משתמשים מהקבוצה �
 FINISH = 'הרובוט סיים להסיר {} משתמשים מהקבוצה'
 ERROR = 'משהו נכשל. בדוק אם קיבלתי הרשאות ניהול מספיקות, או שלח זה למפתח:\n {}'
 ADMIN_NEEDED = "כנראה שאו אני או אתה לא מנהלים... \nבשביל לבצע את הפעולה, שנינו זקוקים להיות מנהלים, ואני צריך הרשאה למחוק הודעות ולהעיף משתמשים."
-PRIVATE = '''היי, אני רובוט שיעזור לכם להסיר את כל המשתמשים מהקבוצה שלכם 🥾
-הוסיפו אותי לקבוצה, ואל תשכחו לתת לי ניהול מתאים כדי שאוכל להסיר אותם.
-הוספתם? מעולה. עכשיו תשלחו בקבוצה /kick ואני אתחיל בעבודה שלי.'''
+PRIVATE = '''Hi, I'm a robot to help you remove all users from your group.
 
+Now add me to a group and don't forget to give me the permissions.
+Then send /kick in the group and I will start my work.
 
 @app.on_message(filters.group & filters.command("kick"))
 def main(_, msg: Message):
