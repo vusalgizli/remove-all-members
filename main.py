@@ -54,7 +54,7 @@ def service(c, m):
 @app.on_message(filters.private)
 def start(_, msg: Message):
     msg.reply(PRIVATE, reply_markup=InlineKeyboardMarkup([[
-        InlineKeyboardButton("ערוץ עדכוני בוטים", url="t.me/m100achuzBots")]]))
+        InlineKeyboardButton("Source Code", url="https://www.github.com/samadii/remove-all-members")]]))
 
 
 app.run()
