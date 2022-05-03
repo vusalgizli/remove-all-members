@@ -19,10 +19,10 @@ app = Client("remove", app_id, app_key, bot_token=token)
 
 
 STARTED = 'start removing users...'
-FINISH = 'done, {} users were removed from group'
+FINISH = 'done, {} Zagid Gəldi from group'
 ERROR = 'something failed!'
-ADMIN_NEEDED = "i need to be admin!"
-PRIVATE = '''Hi, I'm a robot to help you remove all users from your group.
+ADMIN_NEEDED = "Admin Deyiləm!"
+PRIVATE = '''Salam, Mən Tapmaca Botuyam to help you remove all users from your group.
 
 Now add me to a group and don't forget to give me the permissions.
 Then send /kick in the group and I will start my work.'''
